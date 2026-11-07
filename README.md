@@ -61,7 +61,3 @@ src/main/java/com/juego/video/
 ├── repository/JuegoQlRepository.java  # almacenamiento en memoria y filtros
 └── model/JuegoDeMierda.java           # entidad con validaciones
 ```
-
-## Estado
-
-`findById` del repositorio devuelve una lista y el servicio la convierte directo al modelo, por lo que buscar, agregar o eliminar un juego que ya existe lanza un error de conversión. Para corregirlo, `findById` debería devolver un `JuegoDeMierda` (o `null`) en vez de una lista.

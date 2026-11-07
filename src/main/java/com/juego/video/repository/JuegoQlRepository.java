@@ -2,7 +2,6 @@ package com.juego.video.repository;
 import com.juego.video.model.JuegoDeMierda;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -14,16 +13,16 @@ public class JuegoQlRepository {
         return this.listJuego;
     }
 
-    public List<JuegoDeMierda> findById(Long id) {
+    public JuegoDeMierda findById(Long id) {
         for (JuegoDeMierda game: this.listJuego){
             if(Objects.equals(game.getId(),id)){
-                return Collections.singletonList(game);
+                return game;
             }
         }
         return null;
     }
     public JuegoDeMierda save(JuegoDeMierda nuevoGame){
-        JuegoDeMierda game = (JuegoDeMierda) this.findById(nuevoGame.getId());
+        JuegoDeMierda game = this.findById(nuevoGame.getId());
         if (game == null){
             this.listJuego.add(nuevoGame);
             return nuevoGame;
@@ -50,7 +49,7 @@ public class JuegoQlRepository {
       }
     }
     public void deleById(Long id){
-        JuegoDeMierda cago = (JuegoDeMierda) this.findById(id);
+        JuegoDeMierda cago = this.findById(id);
         if(cago == null){
             throw new RuntimeException("no existe tu wea ctm");
         }

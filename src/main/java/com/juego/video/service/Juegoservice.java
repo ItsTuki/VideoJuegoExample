@@ -17,7 +17,7 @@ public class Juegoservice {
     }
 
     public JuegoDeMierda getById(Long id) {
-        return (JuegoDeMierda) this.juego.findById(id);
+        return this.juego.findById(id);
     }
 
     public JuegoDeMierda save(JuegoDeMierda nuevo) {
